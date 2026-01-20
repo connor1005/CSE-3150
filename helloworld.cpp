@@ -1,12 +1,7 @@
 #include <iostream>
 
-//comment
-/*multi line
-comment
-*/
-
 int main() {
-    int num_students = 100;
-    std::cout << "Students=" << num_students << std::endl;
+    bool skill = true;
+    std::cout << "bool = " << skill << std::endl;
     return 0;
 }
