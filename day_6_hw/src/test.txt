@@ -1,0 +1,8 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /home/connor/School/CSE-3150/day_6_hw
+collected 28 items
+
+../test/test.py ............................                             [100%]
+
+============================== 28 passed in 0.08s ==============================
