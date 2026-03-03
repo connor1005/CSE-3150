@@ -1,0 +1,36 @@
+REM Open Notepad++
+GUI r
+DELAY 500
+STRING notepad++
+ENTER
+DELAY 2000
+
+REM Type the Python Script
+STRING import os
+ENTER
+STRING quote = "You met me at a very strange time in my life"
+ENTER
+STRING path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'quote.txt')
+ENTER
+STRING with open(path, 'w') as f: f.write(quote)
+ENTER
+
+REM Save to Desktop
+CTRL s
+DELAY 1000
+STRING %USERPROFILE%\Desktop\payload.py
+ENTER
+DELAY 500
+
+REM Run the Script via CMD
+GUI r
+DELAY 500
+STRING cmd /c python %USERPROFILE%\Desktop\payload.py
+ENTER
+DELAY 1000
+
+REM Delete the Python Script (Self-Cleanup)
+GUI r
+DELAY 500
+STRING cmd /c del %USERPROFILE%\Desktop\payload.py
+ENTER
