@@ -1,8 +1,15 @@
 #pragma once
 #include <cstddef>
 #include <stdexcept>
+#include <concepts>
 
 template <typename T>
+concept EqualityComparable = requires(const T& a, const T& b) {
+	{ a == b } -> std::convertible_to<bool>;
+};
+
+template <typename T>
+requires EqualityComparable<T>
 class Vector {
 private:
 	T* data_;
@@ -75,4 +82,27 @@ T& Vector<T>::at(size_t index) {
 		throw std::out_of_range("Vector index out of bounds!");
 	}
 	return data_[index];
+}
+
+template <typename T>
+T& Vector<T>::operator[](size_t index) {
+	return data_[index];
+}
+
+template <typename T>
+const T& Vector<T>::opertor[](size_t index) const {
+	return data_[index];
+}
+
+template <typename T>
+bool Vector<T>::operator==(const Vector<T>& other) const {
+	if (size_ != other.size_) {
+		return false;
+	}
+	for (size_t i = 0; i < size_; ++i) {
+		if (!(data_[i] == other.data_[i])) {
+			return false;
+		}
+	}
+	return true;
 }
